@@ -1,0 +1,11 @@
+long long maxSubarraySum(int arr[], int n){
+        // Your code here
+        int prevSum = arr[0];
+        int ans = prevSum;
+        for( int i=1; i<n; i++ ){
+            prevSum = max( arr[i], prevSum + arr[i] );
+            ans = max( ans, prevSum );
+        }
+        return ans;
+        
+    }
