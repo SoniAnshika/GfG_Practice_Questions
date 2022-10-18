@@ -1,0 +1,38 @@
+class Solution{
+  public:
+  
+    Node *reverse(Node *head){
+        Node *curr=head,*pre = NULL;
+        while(head){
+            curr = head->next;
+            head->next = pre;
+            pre = head;
+            head = curr;
+        }
+        return pre;
+    }
+    
+    //Function to check whether the list is palindrome.
+    bool isPalindrome(Node *head)
+    {
+        //Your code here
+        Node *mid = head,*fmid = head,*pre;
+        if(!head or !head->next)
+            return true;
+        while(fmid and fmid->next){
+            pre = mid;
+            fmid = fmid->next->next;
+            mid = mid->next;
+        }
+        pre->next = NULL;
+        Node *newHead = reverse(mid);
+        while(head){
+            if(head->data!=newHead->data)
+                return false;
+            head = head->next;
+            newHead = newHead->next;
+        }
+        return true;
+        
+    }
+};
