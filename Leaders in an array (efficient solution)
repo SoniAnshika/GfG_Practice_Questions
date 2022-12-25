@@ -1,4 +1,7 @@
-vector<int> leaders(int a[], int n)
+class Solution{
+    //Function to find the leaders in the array.
+    public:
+    vector<int> leaders(int a[], int n)
     {
         vector<int> v;
         int leaderEle=a[n-1];
@@ -13,4 +16,4 @@ vector<int> leaders(int a[], int n)
         reverse(v.begin(),v.end());
         return v;
     }
- 
+};
