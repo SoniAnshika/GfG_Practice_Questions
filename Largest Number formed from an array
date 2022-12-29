@@ -1,71 +1,38 @@
-//{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
 
-
-// } Driver Code Ends
 class Solution{
-    public:
-    int kthElement(int arr1[], int arr2[], int n, int m, int k)
-    {
-        k--;
-        int c=0,i=0,j=0;
-        
-        while(i<n && j<m)
-        {
-            if(arr1[i]<arr2[j])
-            {
-                if(c==k)
-                    return arr1[i];
-                c++;
-                i++;
-            }
-            else
-            {
-                if(c==k)
-                    return arr2[j];
-                c++;
-                j++;
-            }
-        }
-        
-        while(i<n)
-        {
-            if(c==k)
-                return arr1[i];
-            c++;
-            i++;
-        }
-        
-        while(j<m)
-        {
-            if(c==k)
-                return arr2[j];
-            c++;
-            j++;
-        }
-    }
+public:
+	// The main function that returns the arrangement with the largest value as
+	// string.
+	// The function accepts a vector of strings
+	string printLargest(vector<string> &arr) {
+	    // code here
+	    string res="";
+	    sort(arr.begin(),arr.end(),[](string a,string b){
+	        return (a+b)>(b+a);
+	    });
+	    
+	    for(auto i:arr)
+	        res+=i;
+	        
+	   return res;
+	}
 };
 
-//{ Driver Code Starts.
- 
-// Driver code
-int main()
-{
-	int t;
-	cin>>t;
-	while(t--){
-		int n,m,k;
-		cin>>n>>m>>k;
-		int arr1[n],arr2[m];
-		for(int i=0;i<n;i++)
-			cin>>arr1[i];
-		for(int i=0;i<m;i++)
-			cin>>arr2[i];
-		
-		Solution ob;
-        cout << ob.kthElement(arr1, arr2, n, m, k)<<endl;
-	}
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n, i;
+        cin >> n;
+        vector<string> arr(n);
+        for (i = 0; i < n; i++) {
+            cin >> arr[i];
+        }
+        Solution ob;
+        auto ans = ob.printLargest(arr);
+        cout << ans << "\n";
+    }
     return 0;
 }
-// } Driver Code Ends
